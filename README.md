@@ -1,17 +1,16 @@
-# simulating_rest_apis
-## Flask one page to simulate rest apis
-## Using Postman the requests have been simulated for each requests type.
-### Home Page
-![Home page get request](rest_apis/home.PNG?raw=true "Landing page message")
+# Flask one page to simulate rest apis using Postman
 
-### Get Page
-![Get request](rest_apis/get_req.PNG?raw=true "Message for a get request")
+## Home Page
+<kbd>![Home page get request](rest_apis/home.PNG?raw=true "Landing page message")</kbd>
 
-### Post Page
-![Post request](rest_apis/post_req.PNG?raw=true "Message for a post request")
+## Get Page
+<kbd>![Get request](rest_apis/get_req.PNG?raw=true "Message for a get request")</kbd>
 
-### Delete Page
-![Delete request](rest_apis/del_req.PNG?raw=true "Message for a delete request")
+## Post Page
+<kbd>![Post request](rest_apis/post_req.PNG?raw=true "Message for a post request")</kbd>
 
-### Put Page
-![Put request](rest_apis/put_req.PNG?raw=true "Message for a put request")
+## Delete Page
+<kbd>![Delete request](rest_apis/del_req.PNG?raw=true "Message for a delete request")</kbd>
+
+## Put Page
+<kbd>![Put request](rest_apis/put_req.PNG?raw=true "Message for a put request")</kbd>
