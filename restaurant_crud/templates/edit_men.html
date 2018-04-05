@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+
+    table {
+     cursor: pointer;
+    }
+
+    .res_names {
+      color: #000000;
+    }
+
+  </style>
+{% endblock %}
+{% block content %}
+  <h2> Edit Menu </h2>
+  <form method="post" action="/update_men">
+  	<div class="form-row">
+  	  <div class="col-5">
+        <input type="text" class="form-control" name="men_name" placeholder="Please Type in the New Menu Name"  value="{{men_details['men_name']}}"/>
+        <input type="text" class="form-control" name="men_price" placeholder="Please Type in the New Menu Price"  value="{{men_details['men_price']}}"/>
+        <input type="text" class="form-control" name="men_description" placeholder="Please Type in the New Menu Description"  value="{{men_details['men_desc']}}"/>
+        <input type="text" class="form-control" name="men_course" placeholder="Please Type in the New Menu Course"  value="{{men_details['men_course']}}"/>
+        <input type="hidden" name="men_id" value="{{ men_details['m_id'] }}">
+        <input type="hidden" name="res_id" value="{{ men_details['r_id'] }}">
+      </div>
+      <div class="col-2">
+        <button type="submit" class="btn btn-warning mb-2" value="Update">Update</button>
+      </div>
+  	</div>
+  </form>
+{% endblock %}

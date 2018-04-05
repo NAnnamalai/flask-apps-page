@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+
+    table {
+     cursor: pointer;
+    }
+
+    .men_names {
+      color: #000000;
+    }
+
+  </style>
+{% endblock %}
+{% block content %}
+  <h2> List of Menu Items </h2>
+  <div class="col-lg-12">
+    <table class="table table-sm table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">  Name </th>
+          <th scope="col">  Price </th>
+          <th scope="col">  Description </th>
+          <th scope="col">  Course </th>
+          <th scope="col">   </th>
+          <th scope="col">   </th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for each_item in items %}
+          <tr>
+            <td class="men_names"> {{ each_item.name }} </td>
+            <td>  {{ each_item.price }} </td>
+            <td>  {{ each_item.description }} </td>
+            <td>  {{ each_item.course }} </td>
+            <td> <a href="/edit_men?m_id={{each_item.id}}&r_id={{each_item.restaurant_id}}"> Edit </a> </td>
+            <td> <a href="/delete_men?m_id={{each_item.id}}&r_id={{each_item.restaurant_id}}"> Delete </a> </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

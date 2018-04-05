@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+
+    table {
+     cursor: pointer;
+    }
+
+    .res_names {
+      color: #000000;
+    }
+
+  </style>
+{% endblock %}
+{% block content %}
+  <h2> List of Restaurants </h2>
+  <div class="col-lg-5">
+    <table class="table table-sm table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">  Name </th>
+          <th scope="col">   </th>
+          <th scope="col">   </th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for each_restaurant in restaurants %}
+          <tr>
+            <td> <a href="/view_menu?r_id={{each_restaurant.id}}" class="res_names"> {{ each_restaurant.name }}  </a> </td>
+            <td> <a href="/edit_res?r_id={{each_restaurant.id}}"> Edit </a> </td>
+            <td> <a href="/delete_res?r_id={{each_restaurant.id}}"> Delete </a> </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
