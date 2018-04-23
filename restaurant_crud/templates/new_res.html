@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+
+    table {
+     cursor: pointer;
+    }
+
+    .res_names {
+      color: #000000;
+    }
+
+  </style>
+{% endblock %}
+{% block content %}
+  <h2> Add New Restaurant </h2>
+  <form method="post" action="/add_res">
+  	<div class="form-row">
+  	  <div class="col-5">
+        <input type="text" class="form-control" name="new_res_name" placeholder="Please Type in the New Restaurant Name" />
+      </div>
+      <div class="col-2">
+        <button type="submit" class="btn btn-warning mb-2" value="Add">Add</button>
+      </div>
+  	</div>
+  </form>
+{% endblock %}
