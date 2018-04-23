@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+
+    table {
+     cursor: pointer;
+    }
+
+    .res_names {
+      color: #000000;
+    }
+
+  </style>
+{% endblock %}
+{% block content %}
+  <h2> Simple CRUD Operation with Restaurant and it's Menu Items </h2>
+  <ul> What are the features ? 
+    <li> list all the restaurants, clicking on a restaurant will show all the menu items under it </li>
+    <li> will be able to update restaurant and menu items details with edit links beside them </li>
+    <li> will be able to delete restaurant and menu items individually </li>
+  </ul>
+
+  <ul> Routes
+
+    <li> <b> / </b> and  <b> /list_restaurants </b> displays all the restaurant names </li>
+    <li> <b> /view_menu </b> gets triggered when clicking on a restaurant name </li>
+
+    <li> new restaurants are added using <b> /new_res </b>, where details are submitted to a POST request to <b> /add_res </b> </li>
+    <li> new restaurants are added using <b> /new_men </b>, where details are submitted to a POST request to <b> /add_men </b> </li>
+
+    <li> <b> /edit_res </b> gets trigered when clicking on edit link, which inturn submits a POST request to <b> /update_res </b> </li>
+    <li> <b> /delete_res </b> will delete the restaurant </li>
+
+    <li> <b> /edit_men </b> gets trigered when clicking on edit link, which inturn submits a POST request to <b> /update_men </b> </li>
+    <li> <b> /delete_men will delete the menu item </b> </li>
+
+  </ul>
+
+  
+
+{% endblock %}
