@@ -23,7 +23,7 @@ def list_restaurants():
 def list_menu():
     r_id = request.args.get("r_id")
     items = session.query(MenuItem).filter_by(restaurant_id=r_id).all()
-    return render_template('list_menus.html', items=items)
+    return render_template('list_menus.html', items=items, r_id=r_id)
 
 # redirect to restaurant update page
 @app.route('/edit_res', methods=['GET'])
@@ -89,6 +89,48 @@ def delete_men():
     session.delete(menu)
     session.commit()
     return redirect(url_for('list_menu', r_id=r_id))
+
+# add new res
+@app.route('/new_res', methods=['GET'])
+def new_res():
+   return render_template('new_res.html')
+
+# add new res
+@app.route('/add_res', methods=['POST'])
+def add_res():
+   res_name = request.form.get("new_res_name")
+   restaurant_n = Restaurant(name=res_name)
+   session.add(restaurant_n)
+   session.commit()
+   return redirect(url_for('list_restaurants'))
+
+# add new men
+@app.route('/new_men', methods=['GET'])
+def new_men():
+   r_id = request.args.get("r_id")
+   return render_template('new_men.html', r_id=r_id)
+
+# add new res
+@app.route('/add_men', methods=['POST'])
+def add_men():
+   r_id = request.form.get("res_id")
+   men_name = request.form.get("new_men_name")
+   men_price = request.form.get("new_men_price")
+   men_desc = request.form.get("new_men_description")
+   men_course = request.form.get("new_men_course")
+
+   restaurantn = session.query(Restaurant).filter_by(id=r_id).one()
+
+   menu_n = MenuItem(name=men_name, description=men_desc,
+                     price=men_price, course=men_course, restaurant=restaurantn)
+   session.add(menu_n)
+   session.commit()
+   return redirect(url_for('list_menu', r_id=r_id))
+
+# about app
+@app.route('/about', methods=['GET'])
+def about():
+   return render_template('about_app.html')
 
 
 if __name__ == "__main__":
