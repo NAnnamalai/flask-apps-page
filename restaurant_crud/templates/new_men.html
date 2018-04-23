@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+
+    table {
+     cursor: pointer;
+    }
+
+    .res_names {
+      color: #000000;
+    }
+
+  </style>
+{% endblock %}
+{% block content %}
+  <h2> Add New Menu Items </h2>
+  <form method="post" action="/add_men">
+  	<div class="form-row">
+  	  <div class="col-5">
+        <input type="text" class="form-control" name="new_men_name" placeholder="Please Type in the New Menu Name" />
+        <input type="text" class="form-control" name="new_men_price" placeholder="Please Type in the New Menu Price" />
+        <input type="text" class="form-control" name="new_men_description" placeholder="Please Type in the New Menu Description" />
+        <input type="text" class="form-control" name="new_men_course" placeholder="Please Type in the New Menu Course"  "/>
+        <input type="hidden" name="res_id" value="{{ r_id }}">
+      </div>
+      <div class="col-2">
+        <button type="submit" class="btn btn-warning mb-2" value="Add">Add</button>
+      </div>
+  	</div>
+  </form>
+{% endblock %}
