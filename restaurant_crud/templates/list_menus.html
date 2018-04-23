@@ -15,7 +15,9 @@
   </style>
 {% endblock %}
 {% block content %}
-  <h2> List of Menu Items </h2>
+  
+  <h2> List of Menu Items  <a href="/new_men?r_id={{ r_id }}"> Add new menu items </a>  </h2>
+
   <div class="col-lg-12">
     <table class="table table-sm table-hover">
       <thead class="thead-dark">
@@ -42,4 +44,5 @@
       </tbody>
     </table>
   </div>
+  
 {% endblock %}
