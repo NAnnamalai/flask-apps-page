@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Page Not Found{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+  </style>
+{% endblock %}
+{% block content %}
+    <div>
+    <h1>Please login</h1>
+    <form action="/login" method="post">
+      <div class="col-md-6">
+        <input type="text" class="form-control" placeholder="Username" name="username" value="{{
+          request.form.username }}" autocomplete="off">
+         <input type="password" class="form-control" placeholder="Password" name="password" value="{{
+          request.form.password }}">
+        <input class="btn btn-primary" type="submit" value="Login" autocomplete="off">
+      </div>
+    </form>
+    {% if error %}
+      <p class="error"><strong>Error:</strong> {{ error }}
+    {% endif %}
+  </div>
+{% endblock %}
