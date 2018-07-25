@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block head %}
+  {{ super() }}
+
+  <style type="text/css">
+  </style>
+{% endblock %}
+{% block content %}
+  
+<form method="POST" action='/'>
+  <div class="form-row align-items-center">
+
+    <div class="col-md-6">
+      <label class="sr-only" for="github_uname">Username</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">@</div>
+        </div>
+        <input type="text" class="form-control" name="github_uname" placeholder="Username" autocomplete="off">
+      </div>
+    </div>
+
+    <div class="col-md-1">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+
+  </div>
+</form>
+
+{% if info_flag %}
+  <div class="row">
+
+    <div class="col-9">
+      <div class="table-responsive">
+        <table class="table table-responsive">
+          <thead>
+            <tr>
+            <th> Repos </th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for repo in repo_info.json() %}
+              <tr> 
+              <td> <a href="{{ repo['html_url'] }}" title="{{ repo['description'] }}" target="_blank"> {{ repo['description'] }} </a> </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+    <div class="col-3">
+      {% for each_person in following_info.json() %}
+        <div class="card" style="width: 5rem;">
+          <a href="{{ each_person['html_url'] }}" target="_blank" class="btn btn-primary">
+            <img class="card-img-top" src="{{ each_person['avatar_url'] }}" alt="{{ each_person['login'] }}">
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="col-3">
+      {% for each_person in followers_info.json() %}
+        <div class="card" style="width: 5rem;">
+          <a href="{{ each_person['html_url'] }}" target="_blank" class="btn btn-primary">
+            <img class="card-img-top" src="{{ each_person['avatar_url'] }}" alt="{{ each_person['login'] }}">
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+{% endif %}
+{% endblock %}
