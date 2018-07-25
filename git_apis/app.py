@@ -35,7 +35,10 @@ def home():
                                         following_info=following_response,
                                         followers_info=followers_response,
                                         info_flag=info_flag)
-    
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html')
 
 
 if __name__ == "__main__":
