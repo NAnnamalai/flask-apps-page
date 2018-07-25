@@ -1,6 +1,6 @@
 import requests
 import requests_cache
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 import logging
 
 app = Flask(__name__)
@@ -8,6 +8,21 @@ app = Flask(__name__)
 requests_cache.install_cache('github_cache', backend='sqlite', expire_after=1800)
 
 @app.route('/', methods=['GET', 'POST'])
+def index():
+    return render_template('login.html')
+
+# Route for handling the login page logic
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    error = None
+    if request.method == 'POST':
+        if request.form['username'] != 'admin' or request.form['password'] != 'admin':
+            error = 'Invalid Credentials. Please try again.'
+        else:
+            return redirect(url_for('home'))
+    return render_template('login.html', error=error)
+
+@app.route('/home', methods=['GET', 'POST'])
 def home():
     github_uname = request.form.get("github_uname")
     if github_uname:
